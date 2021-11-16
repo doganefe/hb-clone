@@ -1,0 +1,22 @@
+.subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    margin: 17px 0;
+}
+
+.subheader__col1__p1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.subheader__col1__p2 {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.subheader__col1__p2>span {
+    color: var(--primary-color);
+}

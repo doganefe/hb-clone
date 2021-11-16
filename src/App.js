@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header/Header";
+import Sidebar from "./components/Sidebar/Sidebar";
+import SubHeader from "./components/SubHeader/SubHeader";
+import Modal from "./components/Modal/Modal";
+import ProductList from "./components/ProductList/ProductList";
+import { products } from "./fakeData";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const productsLocal = JSON.parse(localStorage.getItem("products"));
+    if (!productsLocal) {
+      localStorage.setItem("products", JSON.stringify(products));
+    }
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Modal />
+      <Header />
+      <SubHeader />
+      <main className="app__content">
+        <Sidebar />
+        <ProductList />
+      </main>
     </div>
   );
 }

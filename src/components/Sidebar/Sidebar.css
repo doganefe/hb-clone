@@ -1,0 +1,25 @@
+.sidebar {
+    min-width: 200px;
+}
+
+.sidebar__element {
+    margin: 17px 0;
+}
+
+.sidebar__element__title {
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.sidebar__element ul li {
+    color: #646464;
+    list-style: none;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.sidebar__element ul li:hover {
+    color: var(--orange);
+    cursor: pointer;
+}

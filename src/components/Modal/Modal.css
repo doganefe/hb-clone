@@ -1,0 +1,65 @@
+.backdrop {
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: rgba(128, 128, 128, 0.219);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialogBox {
+    width: 400px;
+    height: 260px;
+    background: #FFFFFF;
+    border: 1px solid rgba(228, 228, 228, 0.6);
+    box-sizing: border-box;
+    box-shadow: 0px 6px 12px rgba(50, 50, 71, 0.07);
+    border-radius: 4px;
+}
+
+.dialogBox__question {
+    margin: 23px 27px 20px 18px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dialogBox__text {
+    margin: 16px 38px 10px 20px;
+    font-size: 12px;
+    width: 342px;
+    height: 128px;
+    line-height: 16.8px;
+}
+
+.dialogBox__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.dialog__btn {
+    color: white;
+    font-size: 12px;
+    line-height: 12px;
+    border-radius: 4px;
+    width: 70px;
+    height: 26px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.confirm {
+    background-color: #90D659;
+    margin-right: 10px;
+}
+
+.reject {
+    background-color: #D65959;
+    margin-right: 20px;
+}
