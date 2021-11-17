@@ -1,8 +1,14 @@
-import { products } from "../fakeData";
 import ACTIONS from "./actions";
+import { products } from "../fakeData";
+
 const basketItemsLocal = JSON.parse(localStorage.getItem("basketItems"));
+const productsLocal = JSON.parse(localStorage.getItem("products"));
+if (!productsLocal) {
+  localStorage.setItem("products", JSON.stringify(products));
+}
 
 const initialState = {
+  products: productsLocal || products,
   basketItems: basketItemsLocal || [],
   isModalOpen: false,
   searchInput: "",
@@ -11,6 +17,8 @@ const initialState = {
     order: "",
     brand: "",
   },
+  currentPage: "1",
+  productPerPage: "12",
   dialog: {
     description: "bla bla",
     confirm: () => {},
@@ -59,6 +67,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         sidebarFilters: action.payload,
+      };
+    case ACTIONS.SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
       };
     default:
       return state;

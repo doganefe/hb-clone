@@ -1,6 +1,6 @@
 import { products } from "../../fakeData";
 import Product from "../Product/Product";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import "./ProductList.css";
 
 function calcDiscountedPrice(price, discoundPercentage) {
@@ -8,32 +8,43 @@ function calcDiscountedPrice(price, discoundPercentage) {
 }
 
 const ProductList = () => {
-  const { basketItems, searchInput, sidebarFilters } = useSelector(
-    (state) => state
+  const {
+    basketItems,
+    searchInput,
+    sidebarFilters,
+    currentPage,
+    productPerPage,
+  } = useSelector((state) => state);
+  let productsTmp = [...products];
+
+  const indexOfLastProduct = currentPage * productPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productPerPage;
+  let currentProducts = productsTmp.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
   );
-  let filtered = [...products];
 
   //searchbar filter
   if (searchInput.length >= 2) {
-    filtered = products.filter((product) =>
+    currentProducts = currentProducts.filter((product) =>
       product.title.toLowerCase().includes(searchInput.toLowerCase())
     );
   }
   //sidebar filters
   if (sidebarFilters.color) {
-    filtered = filtered.filter(
+    currentProducts = currentProducts.filter(
       (product) => sidebarFilters.color === product.color
     );
   }
   if (sidebarFilters.brand) {
-    filtered = filtered.filter(
+    currentProducts = currentProducts.filter(
       (product) => sidebarFilters.brand === product.brand
     );
   }
 
   switch (sidebarFilters.order) {
     case "En Düşük Fiyat":
-      filtered
+      currentProducts
         .sort(function (a, b) {
           return (
             calcDiscountedPrice(b.price, b.discoundPercentage) -
@@ -43,7 +54,7 @@ const ProductList = () => {
         .reverse();
       break;
     case "En Yüksek Fiyat":
-      filtered.sort(function (a, b) {
+      currentProducts.sort(function (a, b) {
         return (
           calcDiscountedPrice(b.price, b.discoundPercentage) -
           calcDiscountedPrice(a.price, a.discoundPercentage)
@@ -52,12 +63,12 @@ const ProductList = () => {
 
       break;
     case "En Yeniler (A>Z)":
-      filtered.sort(function (a, b) {
+      currentProducts.sort(function (a, b) {
         return new Date(b.createdDate) - new Date(a.createdDate);
       });
       break;
     case "En Yeniler (Z>A)":
-      filtered
+      currentProducts
         .sort(function (a, b) {
           return new Date(b.createdDate) - new Date(a.createdDate);
         })
@@ -71,7 +82,7 @@ const ProductList = () => {
   return (
     <div className="products">
       <div className="products__productlist">
-        {filtered.map((product, i) => {
+        {currentProducts.map((product, i) => {
           let isPurchasable =
             basketItems && basketItems.some((item) => item.id === product.id);
           return (

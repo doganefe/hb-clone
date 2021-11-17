@@ -78,8 +78,7 @@ const SidebarElementOrdering = ({
 };
 
 const Sidebar = () => {
-  const sidebarFilters = useSelector((state) => state.sidebarFilters);
-  const products = JSON.parse(localStorage.getItem("products"));
+  const { sidebarFilters, products } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 

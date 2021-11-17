@@ -1,6 +1,6 @@
 {
   "name": "hb",
-  "homepage": "http://doganefe.github.io/hb-clone",
+  "homepage": "./",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

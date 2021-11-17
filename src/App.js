@@ -4,16 +4,9 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import SubHeader from "./components/SubHeader/SubHeader";
 import Modal from "./components/Modal/Modal";
 import ProductList from "./components/ProductList/ProductList";
-import { products } from "./fakeData";
-import { useEffect } from "react";
+import Pagination from "./components/Pagination/Pagination";
 
 function App() {
-  useEffect(() => {
-    const productsLocal = JSON.parse(localStorage.getItem("products"));
-    if (!productsLocal) {
-      localStorage.setItem("products", JSON.stringify(products));
-    }
-  }, []);
   return (
     <div className="app">
       <Modal />
@@ -23,6 +16,7 @@ function App() {
         <Sidebar />
         <ProductList />
       </main>
+      <Pagination />
     </div>
   );
 }
