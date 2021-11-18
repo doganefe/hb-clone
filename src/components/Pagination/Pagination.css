@@ -13,7 +13,7 @@
     margin: 0 2px;
 }
 
-.pagination>p:hover, .u {
+.pagination>p:hover, .selected {
     background-color: var(--orange);
     color: white;
 }
