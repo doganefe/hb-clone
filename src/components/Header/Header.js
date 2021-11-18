@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import ACTIONS from "../../redux/actions";
 import Basket from "../Basket/Basket";
 import { useSelector, useDispatch } from "react-redux";
@@ -18,7 +17,7 @@ const Header = () => {
   }
 
   return (
-    <header className="header">
+    <header className="header" data-testid="Header-test">
       <img className="header__logo" src={`${path}/logo.svg`} alt="logo" />
       <div className="header__searchBar">
         <img src={`${path}/searchIcon.svg`} alt="search" />
@@ -28,6 +27,7 @@ const Header = () => {
           placeholder="25 milyon'dan fazla ürün içerisinde ara"
           value={searchInput}
           onChange={handleInput}
+          data-testid="input-test"
         />
       </div>
       <Basket />

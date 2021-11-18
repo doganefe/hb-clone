@@ -5,11 +5,9 @@ import ACTIONS from "../../redux/actions";
 
 const SubHeader = () => {
   const { searchInput, sidebarFilters } = useSelector((state) => state);
-  const [selectInp, setSelectInp] = useState("Sıralama");
   const dispatch = useDispatch();
 
   function handleSelect(e) {
-    setSelectInp(e.target.value);
     const newFilters = { ...sidebarFilters };
     newFilters.order = e.target.value;
 
@@ -18,12 +16,13 @@ const SubHeader = () => {
       payload: newFilters,
     });
   }
+
   return (
     <div className="subheader">
       <div className="subheader__col1">
         <p className="subheader__col1__p1">{searchInput}</p>
         <p className="subheader__col1__p2">
-          Aranan Kelime : <span>{searchInput}</span>
+          Aranan Kelime : <span data-testid="display-input">{searchInput}</span>
         </p>
       </div>
       <div className="subheader__col2">
@@ -32,9 +31,9 @@ const SubHeader = () => {
           id="cars"
           placeholder="Sıralama"
           onChange={handleSelect}
-          value={selectInp}
+          value={sidebarFilters.order}
         >
-          <option value="Sıralama" disabled selected>
+          <option value="Sıralama" disabled>
             Sıralama
           </option>
           <option value="En Düşük Fiyat">En Düşük Fiyat</option>

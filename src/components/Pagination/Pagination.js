@@ -21,13 +21,14 @@ const Pagination = () => {
   }
 
   return (
-    <div className="pagination">
+    <div className="pagination" data-testid="pagination-test">
       {pageNumbers.map((num) => {
         return (
           <p
             key={num + 1}
             onClick={() => selectCurrentPage(num + 1)}
             className={currentPage === num + 1 ? "selected" : ""}
+            data-testid={`pagination-num-test-${num + 1}`}
           >
             {num + 1}
           </p>

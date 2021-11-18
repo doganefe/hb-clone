@@ -14,13 +14,13 @@ const initialState = {
   searchInput: "",
   sidebarFilters: {
     color: "",
-    order: "",
+    order: "Sıralama",
     brand: "",
   },
-  currentPage: "1",
-  productPerPage: "12",
+  currentPage: 1,
+  productPerPage: 12,
   dialog: {
-    description: "bla bla",
+    description: "foo bar",
     confirm: () => {},
     reject: () => {},
   },

@@ -8,7 +8,7 @@ import Pagination from "./components/Pagination/Pagination";
 
 function App() {
   return (
-    <div className="app">
+    <div className="app" data-testid="app-test">
       <Modal />
       <Header />
       <SubHeader />
